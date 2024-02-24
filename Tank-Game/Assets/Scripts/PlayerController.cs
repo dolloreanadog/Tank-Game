@@ -34,25 +34,36 @@ public class PlayerController : Controller
 
     public void ProcessInputs()
     {
+
         if(Input.GetKey(moveForwardKey))
         {
             pawn.MoveForward();
+            pawn.MakeNoise();
         }
         if (Input.GetKey(moveBackwardKey))
         {
             pawn.MoveBackward();
+            pawn.MakeNoise();
         }   
         if (Input.GetKey(rotateCounterClockWiseKey))
         {
             pawn.RotateCounterClockwise();
+            pawn.MakeNoise();
         }
         if (Input.GetKey(rotateClockWiseKey))
         {
             pawn.RotateClockwise();
+            pawn.MakeNoise();
         }
         if (Input.GetKey(fireCannon))
         {
             pawn.Shoot();
+            pawn.MakeNoise();
+        }
+
+        if (!Input.GetKey(moveForwardKey) && !Input.GetKey(moveBackwardKey) && !Input.GetKey(rotateCounterClockWiseKey) && !Input.GetKey(rotateClockWiseKey) && !Input.GetKey(fireCannon))
+        {
+            pawn.StopNoise();
         }
     }
 

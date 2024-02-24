@@ -773,6 +773,8 @@ MonoBehaviour:
   damage: 50
   shellLifespan: 5
   fireRate: 2
+  noiseMakerVolume: 300
+  noiseMaker: {fileID: 0}
 --- !u!54 &65723157632626140
 Rigidbody:
   m_ObjectHideFlags: 0

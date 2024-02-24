@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -12,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Transform playerSpawnTransform;
 
     public List<PlayerController> players;
+    public List<AIController> AIplayers;
 
     // Method called when first created
     private void Awake()
@@ -31,6 +35,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SpawnPlayer();
+        GetAIControllers();
     }
 
 
@@ -47,5 +52,19 @@ public class GameManager : MonoBehaviour
         Pawn newPlayerPawn = newPawnObj.GetComponent<Pawn>();
 
         newPlayerController.pawn = newPlayerPawn;
+
+        // Noise Maker
+        newPlayerPawn.AddComponent<NoiseMaker>();
+        newPlayerPawn.noiseMaker = newPlayerPawn.GetComponent<NoiseMaker>();
+        newPlayerController.pawn = newPlayerPawn;
     }
+
+    public void GetAIControllers()
+    {
+        //    Pawn[] allTanks = FindObjectsByType<Pawn>(FindObjectsSortMode.None);
+        AIplayers = (FindObjectsByType<AIController>(FindObjectsSortMode.None)).ToList();
+
+    }
+
+
 }

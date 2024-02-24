@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Pawn : MonoBehaviour
 {
+    // --[ Input ]--
     // Variable for move speed
     public float moveSpeed;
     // Variable for turn speed
@@ -12,6 +13,9 @@ public abstract class Pawn : MonoBehaviour
     public Mover mover;
     // Variable to hold our Shooter
     public Shooter shooter;
+
+
+
 
     // --[ shooter data ]--
     // Variable for our shell prefab
@@ -25,6 +29,10 @@ public abstract class Pawn : MonoBehaviour
 
     // how fast to fire
     public float fireRate;
+
+    // The noise tank produces
+    public float noiseMakerVolume;
+    public NoiseMaker noiseMaker;
     
 
     // Start is called before the first frame update
@@ -33,6 +41,7 @@ public abstract class Pawn : MonoBehaviour
         
         mover = GetComponent<Mover>();
         shooter = GetComponent<Shooter>();
+        noiseMaker = GetComponent<NoiseMaker>();
     }
 
     // Update is called once per frame
@@ -45,5 +54,9 @@ public abstract class Pawn : MonoBehaviour
     public abstract void MoveBackward();
     public abstract void RotateClockwise();
     public abstract void RotateCounterClockwise();
+    public abstract void RotateTowards(Vector3 targetPosition);
+    public abstract void RotateAway(Vector3 targetPosition);
     public abstract void Shoot();
+    public abstract void MakeNoise();
+    public abstract void StopNoise();
 }
